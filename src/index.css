@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* ── Custom Fonts ── */
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/gh/nicokempe/Geist-Fonts@main/packages/next/dist/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/gh/nicokempe/Geist-Fonts@main/packages/next/dist/fonts/geist-sans/Geist-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/gh/nicokempe/Geist-Fonts@main/packages/next/dist/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('https://cdn.jsdelivr.net/gh/nicokempe/Geist-Fonts@main/packages/next/dist/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('https://cdn.jsdelivr.net/gh/nicokempe/Geist-Fonts@main/packages/next/dist/fonts/geist-mono/GeistMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('https://cdn.jsdelivr.net/gh/nicokempe/Geist-Fonts@main/packages/next/dist/fonts/geist-mono/GeistMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* ── Theme ── */
+@theme {
+  --color-bg: #050507;
+  --color-bg-secondary: #0a0a0f;
+  --color-bg-elevated: #111118;
+  --color-bg-card: #0d0d14;
+  --color-border: #1a1a24;
+  --color-border-light: #252533;
+  --color-text: #ededef;
+  --color-text-secondary: #8b8b96;
+  --color-text-muted: #55555f;
+  --color-accent: #00d4ff;
+  --color-accent-2: #a855f7;
+
+  --color-sp-red: #ff2d55;
+  --color-sp-orange: #ff6b2b;
+  --color-sp-yellow: #ffc800;
+  --color-sp-green: #00e676;
+  --color-sp-cyan: #00d4ff;
+  --color-sp-blue: #4d6fff;
+  --color-sp-violet: #a855f7;
+
+  --font-sans: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'SF Mono', 'Consolas', monospace;
+}
+
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(0, 212, 255, 0.2);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-light);
+  border-radius: 3px;
+}
+
+/* ── Spectral gradient ── */
+.spectral-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-sp-red),
+    var(--color-sp-orange),
+    var(--color-sp-yellow),
+    var(--color-sp-green),
+    var(--color-sp-cyan),
+    var(--color-sp-blue),
+    var(--color-sp-violet)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+}
+
+/* ── Noise overlay ── */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
