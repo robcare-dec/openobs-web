@@ -8,7 +8,7 @@ const INSTALL_COMMANDS = [
   { label: 'npm', cmd: 'npm install @agentic-obs/agent-core' },
   { label: 'pnpm', cmd: 'pnpm add @agentic-obs/agent-core' },
   { label: 'yarn', cmd: 'yarn add @agentic-obs/agent-core' },
-  { label: 'git', cmd: 'git clone https://github.com/AgenticObs/openobs.git' },
+  { label: 'git', cmd: 'git clone https://github.com/openobs/openobs.git' },
 ]
 
 const container = {

@@ -1,4 +1,4 @@
-export const GITHUB_URL = 'https://github.com/AgenticObs/openobs'
+export const GITHUB_URL = 'https://github.com/openobs/openobs'
 
 export const NAV_LINKS = [
   { label: 'Features', href: '#features' },

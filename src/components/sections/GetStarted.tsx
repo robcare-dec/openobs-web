@@ -8,7 +8,7 @@ const STEPS = [
     num: '01',
     title: 'Clone and install',
     description: 'OpenObs is a TypeScript monorepo managed with npm workspaces.',
-    code: `$ git clone https://github.com/AgenticObs/openobs.git
+    code: `$ git clone https://github.com/openobs/openobs.git
 $ cd openobs
 $ npm install`,
     codeTitle: 'terminal',
