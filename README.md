@@ -1,6 +1,20 @@
-# Prism Website
+# OpenObs Website
 
-Marketing site built with React, TypeScript, Tailwind, and Vite.
+Marketing site for OpenObs, an open-source observability experience focused on AI-native workflows, dashboard generation, and alerting from natural language.
+
+## What this repo contains
+
+- The public website / landing page for OpenObs
+- A static React + Vite frontend that can be deployed on GitHub Pages
+- GitHub Actions workflow for automatic Pages deployment
+
+## Stack
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion
 
 ## Local development
 
@@ -9,34 +23,60 @@ npm install
 npm run dev
 ```
 
+The local dev server runs with a root base path, which keeps development simple.
+
 ## Production build
 
 ```bash
 npm run build
 ```
 
-## GitHub Pages deployment
+## Deploying to GitHub Pages
 
-This project is now set up to deploy to GitHub Pages with GitHub Actions.
+This repository is configured to deploy through GitHub Actions.
 
-What is already handled:
-- On each push to `main`, GitHub Actions builds and deploys the `dist/` folder.
-- During GitHub Actions builds, Vite automatically uses `/${repo-name}/` as the base path.
-- If you use a custom domain later, the same site can still build from `/`.
+What is already set up:
+- Every push to `main` triggers a production build
+- The generated `dist/` folder is deployed to GitHub Pages
+- Vite automatically uses the correct repository base path during GitHub Actions builds
+- `404.html` is generated from `index.html` to make future SPA-style routing safer on Pages
+- `.nojekyll` is included so GitHub Pages serves the static output directly
 
-## GitHub setup
+## GitHub Pages setup
 
-1. Push this project to a GitHub repository.
-2. Open `Settings` -> `Pages`.
-3. Set the source to `GitHub Actions`.
-4. Push to `main` or run the deploy workflow manually.
+1. Open the repository on GitHub.
+2. Go to `Settings` -> `Pages`.
+3. Set `Source` to `GitHub Actions`.
+4. Push to `main` or manually run the deploy workflow.
 
-## Notes
+## Custom domains
 
-- This site is a good fit for GitHub Pages because it is a static Vite app with no backend requirement.
-- The workflow copies `index.html` to `404.html`, which helps if you add SPA routes later.
-- If you ever need to build locally for a non-root path, you can override the base path:
+The project can also be used with a custom domain. If you switch away from the repository path deployment and want full root hosting, you can provide a custom base path during build:
 
 ```bash
 VITE_BASE_PATH=/your-path/ npm run build
 ```
+
+For a root-domain deployment, the base path should remain `/`.
+
+## Project structure
+
+```text
+.
+|-- public/
+|-- src/
+|   |-- components/
+|   |-- lib/
+|   `-- main.tsx
+|-- .github/workflows/
+|-- index.html
+`-- vite.config.ts
+```
+
+## Contributing
+
+Issues and pull requests are welcome. If you are changing layout, copy, or brand presentation, try to preserve the overall OpenObs voice and product direction.
+
+## License
+
+No license has been added yet. Until a license is published, all rights are reserved by default.
