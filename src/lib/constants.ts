@@ -1,5 +1,5 @@
 export const GITHUB_URL = 'https://github.com/openobs/openobs'
-export const DOCS_URL = 'https://docs.openobs.dev'
+export const DOCS_URL = 'https://docs.openobs.com'
 
 export const NAV_LINKS = [
   { label: 'Features', href: '#features' },
