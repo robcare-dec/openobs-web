@@ -1,9 +1,11 @@
 export const GITHUB_URL = 'https://github.com/openobs/openobs'
+export const DOCS_URL = 'https://docs.openobs.dev'
 
 export const NAV_LINKS = [
   { label: 'Features', href: '#features' },
   { label: 'Architecture', href: '#architecture' },
   { label: 'Get Started', href: '#get-started' },
+  { label: 'Docs', href: DOCS_URL },
   { label: 'FAQ', href: '#faq' },
 ] as const
 
@@ -104,3 +106,5 @@ export const TECH_STACK = [
   'Tailwind CSS',
   'OpenTelemetry',
 ] as const
+
+

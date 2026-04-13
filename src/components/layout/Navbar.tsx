@@ -36,6 +36,8 @@ export function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
+                target={link.href.startsWith('http') ? '_blank' : undefined}
+                rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 className="text-[0.9rem] text-text-secondary hover:text-text transition-colors"
               >
                 {link.label}
@@ -78,6 +80,8 @@ export function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   onClick={() => setMobileOpen(false)}
                   className="text-[0.9rem] text-text-secondary hover:text-text py-2 transition-colors"
                 >
@@ -100,3 +104,4 @@ export function Navbar() {
     </nav>
   )
 }
+

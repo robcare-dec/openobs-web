@@ -1,7 +1,7 @@
 import { OpenObsLogo } from '@/components/ui/OpenObsLogo'
 import { SpectralBar } from '@/components/ui/SpectralBar'
 import { GithubIcon } from '@/components/ui/GithubIcon'
-import { GITHUB_URL } from '@/lib/constants'
+import { DOCS_URL, GITHUB_URL } from '@/lib/constants'
 
 const FOOTER_LINKS = {
   Product: [
@@ -11,7 +11,7 @@ const FOOTER_LINKS = {
     { label: 'FAQ', href: '#faq' },
   ],
   Resources: [
-    { label: 'Documentation', href: '#get-started' },
+    { label: 'Documentation', href: DOCS_URL },
     { label: 'GitHub', href: GITHUB_URL },
     { label: 'Issues', href: `${GITHUB_URL}/issues` },
     { label: 'Discussions', href: `${GITHUB_URL}/discussions` },
@@ -89,3 +89,5 @@ export function Footer() {
     </footer>
   )
 }
+
+
