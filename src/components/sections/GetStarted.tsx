@@ -6,34 +6,32 @@ import { CodeBlock } from '@/components/ui/CodeBlock'
 const STEPS = [
   {
     num: '01',
-    title: 'Clone and install',
-    description: 'OpenObs is a TypeScript monorepo managed with npm workspaces.',
-    code: `$ git clone https://github.com/openobs/openobs.git
-$ cd openobs
-$ npm install`,
+    title: 'Install from npm',
+    description: 'OpenObs ships as a single self-contained npm package. Node.js 20+ is the only prerequisite.',
+    code: `$ npm install -g openobs`,
     codeTitle: 'terminal',
   },
   {
     num: '02',
-    title: 'Configure your environment',
-    description: 'Set up your LLM provider and datasource connection.',
-    code: `$ cp .env.example .env
+    title: 'Launch',
+    description: 'A single command starts the API gateway and the web dashboard on :3000.',
+    code: `$ openobs
 
-# .env
-LLM_PROVIDER=anthropic
-LLM_API_KEY=sk-ant-...
-PROMETHEUS_URL=http://localhost:9090`,
-    codeTitle: '.env',
+✓ OpenObs listening on :3000
+✓ Opening setup wizard in your browser...`,
+    codeTitle: 'terminal',
   },
   {
     num: '03',
-    title: 'Start OpenObs',
-    description: 'A single command starts the API gateway and the web dashboard.',
-    code: `$ npm run start
-
-✓ API Gateway listening on :3000
-✓ Web Dashboard ready on :5173`,
-    codeTitle: 'terminal',
+    title: 'Connect your stack',
+    description: 'The setup wizard walks you through picking an LLM provider and pointing OpenObs at your Prometheus. No config files required.',
+    code: `# The wizard captures everything interactively:
+#   • LLM provider (Anthropic, OpenAI, Gemini, DeepSeek, Ollama, ...)
+#   • Prometheus URL (optional — dashboards work without it)
+#   • First admin account
+#
+# Secrets land encrypted in ~/.openobs/ on your laptop.`,
+    codeTitle: 'setup wizard',
   },
 ]
 
@@ -52,8 +50,8 @@ export function GetStarted() {
             Up and running in minutes
           </h2>
           <p className="text-text-secondary text-lg max-w-[480px] mx-auto">
-            Clone, configure your datasource, and start generating dashboards with
-            natural language.
+            One npm install, one command to launch, then point it at your
+            Prometheus from the browser wizard.
           </p>
         </div>
 

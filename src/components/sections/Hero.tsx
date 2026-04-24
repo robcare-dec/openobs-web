@@ -5,9 +5,9 @@ import { GithubIcon } from '@/components/ui/GithubIcon'
 import { GITHUB_URL } from '@/lib/constants'
 
 const INSTALL_COMMANDS = [
-  { label: 'npm', cmd: 'npm install @agentic-obs/agent-core' },
-  { label: 'pnpm', cmd: 'pnpm add @agentic-obs/agent-core' },
-  { label: 'yarn', cmd: 'yarn add @agentic-obs/agent-core' },
+  { label: 'npm', cmd: 'npm install -g openobs' },
+  { label: 'pnpm', cmd: 'pnpm add -g openobs' },
+  { label: 'yarn', cmd: 'yarn global add openobs' },
   { label: 'git', cmd: 'git clone https://github.com/openobs/openobs.git' },
 ]
 
