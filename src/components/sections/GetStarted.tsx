@@ -3,11 +3,31 @@ import { useRef } from 'react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { CodeBlock } from '@/components/ui/CodeBlock'
 
-const STEPS = [
+type Step = {
+  num: string
+  title: string
+  description: string
+  code: string
+  codeTitle: string
+  helmNote?: {
+    prefix: string
+    linkText: string
+    href: string
+    suffix: string
+  }
+}
+
+const STEPS: Step[] = [
   {
     num: '01',
     title: 'Install from npm',
     description: 'OpenObs ships as a single self-contained npm package. Node.js 20+ is the only prerequisite.',
+    helmNote: {
+      prefix: ' Running on Kubernetes? Install with the official ',
+      linkText: 'Helm chart',
+      href: 'https://docs.openobs.com/install/kubernetes',
+      suffix: ' instead.',
+    },
     code: `$ npm install -g openobs`,
     codeTitle: 'terminal',
   },
@@ -69,7 +89,23 @@ export function GetStarted() {
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="text-[1rem] font-medium mb-1.5">{step.title}</h3>
-                <p className="text-[0.9rem] text-text-secondary mb-4">{step.description}</p>
+                <p className="text-[0.9rem] text-text-secondary mb-4">
+                  {step.description}
+                  {step.helmNote && (
+                    <>
+                      {step.helmNote.prefix}
+                      <a
+                        href={step.helmNote.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-text transition-colors"
+                      >
+                        {step.helmNote.linkText}
+                      </a>
+                      {step.helmNote.suffix}
+                    </>
+                  )}
+                </p>
                 <CodeBlock title={step.codeTitle}>{step.code}</CodeBlock>
               </div>
             </motion.div>

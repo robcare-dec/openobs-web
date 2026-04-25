@@ -6,9 +6,7 @@ import { GITHUB_URL } from '@/lib/constants'
 
 const INSTALL_COMMANDS = [
   { label: 'npm', cmd: 'npm install -g openobs' },
-  { label: 'pnpm', cmd: 'pnpm add -g openobs' },
-  { label: 'yarn', cmd: 'yarn global add openobs' },
-  { label: 'git', cmd: 'git clone https://github.com/openobs/openobs.git' },
+  { label: 'helm', cmd: 'helm install openobs oci://ghcr.io/openobs/charts/openobs' },
 ]
 
 const container = {
