@@ -4,16 +4,16 @@ import { SectionLabel } from '@/components/ui/SectionLabel'
 import { AGENTS } from '@/lib/constants'
 
 const AGENT_BORDER_COLORS: Record<string, string> = {
-  'sp-red': 'border-b-sp-red',
-  'sp-orange': 'border-b-sp-orange',
-  'sp-yellow': 'border-b-sp-yellow',
-  'sp-green': 'border-b-sp-green',
-  'sp-cyan': 'border-b-sp-cyan',
-  'sp-violet': 'border-b-sp-violet',
+  'sp-red': 'border-b-accent',
+  'sp-orange': 'border-b-accent',
+  'sp-yellow': 'border-b-accent',
+  'sp-green': 'border-b-accent',
+  'sp-cyan': 'border-b-accent',
+  'sp-violet': 'border-b-accent',
 }
 
 const INTERFACES = ['Web Dashboard', 'REST API', 'WebSocket']
-const INFRA = ['Prometheus', 'Kubernetes', 'Cloud APIs', 'Custom Adapters']
+const INFRA = ['Prometheus', 'Logs', 'Kubernetes', 'Custom Adapters']
 
 function Connector() {
   return (
@@ -41,17 +41,17 @@ export function Architecture() {
 
   return (
     <section id="architecture" className="relative py-32">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(80%,900px)] h-px bg-gradient-to-r from-transparent via-border-light to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(80%,900px)] h-px bg-border" />
 
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
         <div className="text-center mb-16">
           <SectionLabel>Architecture</SectionLabel>
           <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight mb-4">
-            Multi-agent orchestration
+            Built for controlled autonomy
           </h2>
           <p className="text-text-secondary text-lg max-w-[520px] mx-auto">
-            An intelligent orchestrator routes requests to specialized agents, each with
-            focused expertise and tool access.
+            Agents can investigate across systems, but permissions, RBAC, and approval
+            gates decide what they are allowed to change.
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export function Architecture() {
               {INTERFACES.map((name) => (
                 <div
                   key={name}
-                  className="px-5 py-2.5 bg-bg-secondary border border-border-light rounded-lg text-[0.85rem] hover:bg-bg-elevated transition-colors"
+                  className="px-5 py-2.5 bg-bg-secondary border border-border-light text-[0.85rem] hover:bg-bg-elevated transition-colors"
                 >
                   {name}
                 </div>
@@ -87,12 +87,11 @@ export function Architecture() {
               Orchestration
             </div>
             <div className="flex justify-center">
-              <div className="px-6 py-3 bg-bg-secondary border border-sp-cyan rounded-lg text-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-sp-cyan/10 to-transparent" />
+              <div className="px-6 py-3 bg-bg-secondary border border-accent text-center relative overflow-hidden">
                 <div className="relative">
                   <div className="text-[0.9rem] font-medium">Orchestrator Agent</div>
                   <div className="font-mono text-[0.65rem] text-text-muted mt-0.5">
-                    intent classification & routing
+                    plan, tool routing, policy checks
                   </div>
                 </div>
               </div>
@@ -111,7 +110,7 @@ export function Architecture() {
                 <motion.div
                   key={agent.name}
                   whileHover={{ y: -3 }}
-                  className={`p-3 bg-bg-secondary border border-border rounded-lg text-center border-b-2 ${AGENT_BORDER_COLORS[agent.color]} hover:border-border-light transition-colors`}
+                  className={`p-3 bg-bg-secondary border border-border text-center border-b-2 ${AGENT_BORDER_COLORS[agent.color]} hover:border-border-light transition-colors`}
                 >
                   <div className="text-[0.78rem] font-medium">{agent.name}</div>
                   <div className="font-mono text-[0.6rem] text-text-muted">{agent.desc}</div>
@@ -131,7 +130,7 @@ export function Architecture() {
               {INFRA.map((name) => (
                 <div
                   key={name}
-                  className="py-2.5 bg-bg-secondary border border-border rounded-lg text-center font-mono text-[0.75rem] text-text-secondary hover:border-border-light transition-colors"
+                  className="py-2.5 bg-bg-secondary border border-border text-center font-mono text-[0.75rem] text-text-secondary hover:border-border-light transition-colors"
                 >
                   {name}
                 </div>

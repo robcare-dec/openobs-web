@@ -17,12 +17,12 @@ const ICON_MAP = {
 } as const
 
 const COLOR_MAP = {
-  red: 'bg-sp-red/10 text-sp-red',
-  orange: 'bg-sp-orange/10 text-sp-orange',
-  yellow: 'bg-sp-yellow/10 text-sp-yellow',
-  green: 'bg-sp-green/10 text-sp-green',
-  cyan: 'bg-sp-cyan/10 text-sp-cyan',
-  violet: 'bg-sp-violet/10 text-sp-violet',
+  red: 'bg-bg-elevated text-accent',
+  orange: 'bg-bg-elevated text-accent',
+  yellow: 'bg-bg-elevated text-accent',
+  green: 'bg-bg-elevated text-accent',
+  cyan: 'bg-bg-elevated text-accent',
+  violet: 'bg-bg-elevated text-accent',
 } as const
 
 export function FeatureIcon({
@@ -34,7 +34,7 @@ export function FeatureIcon({
 }) {
   const Icon = ICON_MAP[icon]
   return (
-    <div className={`w-10 h-10 rounded-[10px] flex items-center justify-center ${COLOR_MAP[color]}`}>
+    <div className={`w-10 h-10 border border-border flex items-center justify-center ${COLOR_MAP[color]}`}>
       <Icon size={20} />
     </div>
   )

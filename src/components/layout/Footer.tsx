@@ -1,5 +1,4 @@
 import { OpenObsLogo } from '@/components/ui/OpenObsLogo'
-import { SpectralBar } from '@/components/ui/SpectralBar'
 import { GithubIcon } from '@/components/ui/GithubIcon'
 import { DOCS_URL, GITHUB_URL } from '@/lib/constants'
 
@@ -36,13 +35,13 @@ export function Footer() {
               OpenObs
             </a>
             <p className="text-sm text-text-secondary leading-relaxed mb-6 max-w-[280px]">
-              Open-source AI-powered observability platform. Generate dashboards, investigate incidents, and manage alerts with natural language.
+              Open-source AI SRE loop for dashboards, alerts, investigations, and approval-gated fixes.
             </p>
             <a
               href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 text-[0.8rem] text-text-secondary border border-border-light rounded-lg hover:bg-bg-elevated hover:text-text transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2 text-[0.8rem] text-text-secondary border border-border-light hover:bg-bg-secondary hover:text-text transition-colors"
             >
               <GithubIcon className="w-4 h-4" />
               Star on GitHub
@@ -78,7 +77,7 @@ export function Footer() {
       <div className="border-t border-border">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-3 font-mono text-[0.7rem] text-text-muted">
-            <SpectralBar />
+            <span className="w-2 h-2 bg-accent" />
             OpenObs &mdash; MIT License &mdash; {new Date().getFullYear()}
           </div>
           <div className="font-mono text-[0.65rem] text-text-muted">

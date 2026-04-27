@@ -20,7 +20,7 @@ export function CodeBlock({ children, title }: CodeBlockProps) {
   }
 
   return (
-    <div className="relative group rounded-xl border border-border bg-bg-secondary overflow-hidden">
+    <div className="relative group border border-border bg-bg-secondary overflow-hidden">
       {title && (
         <div className="flex items-center justify-between px-4 py-2.5 border-b border-border bg-bg-elevated">
           <span className="font-mono text-[0.7rem] text-text-muted">{title}</span>

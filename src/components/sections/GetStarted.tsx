@@ -61,7 +61,7 @@ export function GetStarted() {
 
   return (
     <section id="get-started" className="relative py-32">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(80%,900px)] h-px bg-gradient-to-r from-transparent via-border-light to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[min(80%,900px)] h-px bg-border" />
 
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10">
         <div className="text-center mb-16">

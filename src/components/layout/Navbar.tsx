@@ -19,7 +19,7 @@ export function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
         scrolled
-          ? 'bg-bg/85 backdrop-blur-xl border-b border-border'
+          ? 'bg-bg/95 border-b border-border'
           : 'bg-transparent'
       }`}
     >
@@ -49,7 +49,7 @@ export function Navbar() {
               href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 text-[0.85rem] text-text-secondary border border-border-light rounded-lg hover:bg-bg-elevated hover:text-text hover:border-text-muted transition-all"
+              className="flex items-center gap-2 px-4 py-2 text-[0.85rem] text-text-secondary border border-border-light hover:bg-bg-secondary hover:text-text transition-colors"
             >
               <GithubIcon className="w-4 h-4" />
               GitHub
@@ -73,7 +73,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-bg/95 backdrop-blur-xl border-b border-border overflow-hidden"
+            className="md:hidden bg-bg border-b border-border overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-3">
               {NAV_LINKS.map((link) => (

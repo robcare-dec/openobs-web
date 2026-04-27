@@ -3,24 +3,24 @@ import { useRef } from 'react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 
 const TERMINAL_LINES = [
-  { type: 'input', text: 'Create a dashboard for API latency monitoring' },
+  { type: 'input', text: 'Why is checkout latency high right now?' },
   { type: 'blank' },
-  { type: 'agent', label: 'Discovery Agent', text: 'scanning datasources...' },
-  { type: 'metric', text: 'found 24 metrics matching "api" "latency" "http"' },
-  { type: 'detail', text: 'http_request_duration_seconds_bucket' },
-  { type: 'detail', text: 'http_request_duration_seconds_sum' },
-  { type: 'detail', text: 'http_requests_total' },
+  { type: 'agent', label: 'Investigation Agent', text: 'building evidence window...' },
+  { type: 'metric', text: 'latency spike started 14:08 UTC; p95 180ms -> 920ms' },
+  { type: 'detail', text: 'metric: histogram_quantile(0.95, checkout_request_duration_seconds_bucket)' },
   { type: 'blank' },
-  { type: 'agent', label: 'Dashboard Generator', text: 'building panels...' },
-  { type: 'check', text: 'P50/P95/P99 Latency (histogram_quantile)' },
-  { type: 'check', text: 'Request Rate by Status Code' },
-  { type: 'check', text: 'Error Rate (5xx / total)' },
-  { type: 'check', text: 'Latency Heatmap' },
+  { type: 'agent', label: 'Logs', text: 'searching correlated errors...' },
+  { type: 'check', text: 'timeout errors concentrated on checkout-api-7d9c' },
+  { type: 'check', text: 'no matching 5xx spike upstream' },
   { type: 'blank' },
-  { type: 'agent', label: 'Verification', text: 'validating queries...' },
-  { type: 'success', text: 'All 4 panels verified against Prometheus' },
+  { type: 'agent', label: 'Kubernetes', text: 'checking pods, events, and rollout...' },
+  { type: 'check', text: 'new pod revision deployed at 14:06 UTC' },
+  { type: 'check', text: 'CPU throttling increased 8x on affected pods' },
   { type: 'blank' },
-  { type: 'done', text: 'Dashboard created — 4 panels, all queries validated' },
+  { type: 'agent', label: 'Approval', text: 'prepared safe remediation request...' },
+  { type: 'success', text: 'recommended: raise CPU limit and restart affected deployment' },
+  { type: 'blank' },
+  { type: 'done', text: 'Investigation complete — root cause found, fix waiting for approval' },
 ] as const
 
 export function Demo() {
@@ -39,35 +39,36 @@ export function Demo() {
           >
             <SectionLabel>Philosophy</SectionLabel>
             <h2 className="text-[clamp(2rem,3.5vw,2.8rem)] font-bold tracking-tight mb-5 leading-tight">
-              Grounded in real data,
+              From symptom to fix,
               <br />
-              not hallucination
+              with evidence
             </h2>
             <p className="text-text-secondary text-[1.05rem] mb-8 max-w-[440px] leading-relaxed">
-              OpenObs discovers actual metrics from your infrastructure before generating
-              anything. No assumed standard metrics. No fabricated queries.
+              OpenObs does not stop at a chat answer. It gathers telemetry,
+              checks cluster state, writes an investigation report, and gates
+              risky actions behind approval.
             </p>
 
             <div className="space-y-4">
               {[
                 {
                   num: '01',
-                  title: 'Discovery-first',
-                  desc: 'always queries real datasources before generating dashboards or alerts',
+                  title: 'Evidence-first',
+                  desc: 'queries real metrics, logs, and cluster state before reaching a conclusion',
                 },
                 {
                   num: '02',
-                  title: 'Conservative uncertainty',
-                  desc: 'prefers narrower results grounded in data over comprehensive guesses',
+                  title: 'Operator-safe',
+                  desc: 'read-only investigation can run directly; mutations require approval',
                 },
                 {
                   num: '03',
-                  title: 'Verification built-in',
-                  desc: 'every artifact is validated against the actual infrastructure',
+                  title: 'Auditable',
+                  desc: 'permissions, approvals, and actions are recorded for team review',
                 },
               ].map((item) => (
                 <div key={item.num} className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-7 h-7 rounded-md flex items-center justify-center text-[0.65rem] font-mono bg-bg-elevated border border-border-light text-sp-cyan mt-0.5">
+                    <span className="flex-shrink-0 w-7 h-7 flex items-center justify-center text-[0.65rem] font-mono bg-bg-elevated border border-border-light text-accent mt-0.5">
                     {item.num}
                   </span>
                   <span className="text-[0.9rem] text-text-secondary">
@@ -83,7 +84,7 @@ export function Demo() {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-bg-secondary border border-border rounded-xl overflow-hidden font-mono text-[0.78rem] leading-[1.9]"
+            className="bg-bg-secondary border border-border overflow-hidden font-mono text-[0.78rem] leading-[1.9]"
           >
             {/* Title bar */}
             <div className="flex items-center gap-1.5 px-4 py-3 bg-bg-elevated border-b border-border">
@@ -102,21 +103,21 @@ export function Demo() {
                 if (line.type === 'input')
                   return (
                     <div key={i} className="flex gap-2">
-                      <span className="text-sp-cyan/70 select-none">&#10095;</span>
+                      <span className="text-accent select-none">&#10095;</span>
                       <span className="text-text">{line.text}</span>
                     </div>
                   )
                 if (line.type === 'agent')
                   return (
                     <div key={i} className="pl-3 border-l border-border ml-1 mt-1">
-                      <span className="text-sp-violet">&#9672; {line.label}</span>{' '}
+                      <span className="text-accent">&#9672; {line.label}</span>{' '}
                       <span className="text-text-secondary">{line.text}</span>
                     </div>
                   )
                 if (line.type === 'metric')
                   return (
                     <div key={i} className="pl-3 border-l border-border ml-1">
-                      <span className="text-sp-yellow">&nbsp; {line.text}</span>
+                      <span className="text-text">&nbsp; {line.text}</span>
                     </div>
                   )
                 if (line.type === 'detail')
@@ -134,13 +135,13 @@ export function Demo() {
                 if (line.type === 'success')
                   return (
                     <div key={i} className="pl-3 border-l border-border ml-1">
-                      <span className="text-sp-green">&nbsp; &#10003; {line.text}</span>
+                      <span className="text-accent">&nbsp; &#10003; {line.text}</span>
                     </div>
                   )
                 if (line.type === 'done')
                   return (
                     <div key={i}>
-                      <span className="text-sp-green">&#10003; {line.text}</span>
+                      <span className="text-accent">&#10003; {line.text}</span>
                     </div>
                   )
                 return null

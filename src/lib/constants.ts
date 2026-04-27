@@ -3,7 +3,7 @@ export const DOCS_URL = 'https://docs.openobs.com'
 
 export const NAV_LINKS = [
   { label: 'Features', href: '#features' },
-  { label: 'Architecture', href: '#architecture' },
+  { label: 'Loop', href: '#architecture' },
   { label: 'Get Started', href: '#get-started' },
   { label: 'Docs', href: DOCS_URL },
   { label: 'FAQ', href: '#faq' },
@@ -11,63 +11,63 @@ export const NAV_LINKS = [
 
 export const FEATURES = [
   {
-    title: 'Natural Language Dashboards',
+    title: 'Observe',
     description:
-      'Describe what you want to monitor in plain English. OpenObs discovers real metrics from your infrastructure and generates precise, queryable dashboard panels.',
+      'Create, edit, clone, explain, and delete dashboards from natural language. OpenObs discovers real metrics and validates every query.',
     icon: 'layout-dashboard',
     color: 'red' as const,
   },
   {
-    title: 'Automated Investigation',
+    title: 'Detect',
     description:
-      'When issues arise, AI agents automatically collect evidence from metrics, correlate anomalies, and generate detailed investigation reports.',
-    icon: 'search',
+      'Create and tune alert rules through chat. When an alert fires, start an investigation from the alert context.',
+    icon: 'bell',
     color: 'orange' as const,
   },
   {
-    title: 'Intelligent Alerting',
+    title: 'Investigate',
     description:
-      'Conversationally create alert rules with validated PromQL queries and sensible thresholds. Every rule is verified before deployment.',
-    icon: 'bell',
+      'Ask why latency, errors, or saturation changed. The agent queries metrics, logs, recent changes, and Kubernetes when configured.',
+    icon: 'search',
     color: 'yellow' as const,
   },
   {
-    title: 'Safe Execution',
+    title: 'Act safely',
     description:
-      'Execute remediation with built-in dry-run capability, approval workflows, and full audit logging. Every action goes through permission checks.',
+      'OpenObs can propose fixes. Mutating cluster operations become approval requests with RBAC and audit logging before execution.',
     icon: 'shield-check',
     color: 'green' as const,
   },
   {
-    title: 'Adapter Ecosystem',
+    title: 'Enterprise controls',
     description:
-      'Extensible SDK for Prometheus, Kubernetes, cloud providers, and custom integrations. Build your own adapter with the scaffolding CLI.',
+      'Grafana-like RBAC, service accounts, audit logs, and approval workflows are built into the open-source project.',
     icon: 'puzzle',
     color: 'cyan' as const,
   },
   {
-    title: 'Real-time Streaming',
+    title: 'Transparent agents',
     description:
-      'WebSocket-based live updates during dashboard generation and investigation. See every agent decision and intermediate result as it happens.',
+      'Watch tool calls, intermediate evidence, and final reports stream live instead of trusting a black-box answer.',
     icon: 'activity',
     color: 'violet' as const,
   },
 ] as const
 
 export const AGENTS = [
-  { name: 'Dashboard', desc: 'Generation', color: 'sp-red' },
-  { name: 'Investigation', desc: 'Analysis', color: 'sp-orange' },
-  { name: 'Alerting', desc: 'Rules', color: 'sp-yellow' },
-  { name: 'Execution', desc: 'Remediation', color: 'sp-green' },
-  { name: 'Verification', desc: 'Validation', color: 'sp-cyan' },
-  { name: 'Discovery', desc: 'Metrics', color: 'sp-violet' },
+  { name: 'Observe', desc: 'Dashboards', color: 'sp-red' },
+  { name: 'Detect', desc: 'Alerts', color: 'sp-orange' },
+  { name: 'Investigate', desc: 'Evidence', color: 'sp-yellow' },
+  { name: 'Approve', desc: 'Fixes', color: 'sp-green' },
+  { name: 'Govern', desc: 'RBAC', color: 'sp-cyan' },
+  { name: 'Extend', desc: 'Adapters', color: 'sp-violet' },
 ] as const
 
 export const FAQ_ITEMS = [
   {
     question: 'What data sources does OpenObs support?',
     answer:
-      'OpenObs ships with a Prometheus adapter out of the box. The adapter SDK lets you build integrations for any data source — Datadog, CloudWatch, InfluxDB, or your own custom APIs. Kubernetes and cloud provider adapters are also available.',
+      'OpenObs supports Prometheus-compatible metrics, Loki-style logs, and Kubernetes operations connectors. The adapter SDK is designed for adding more telemetry, cloud, and internal systems.',
   },
   {
     question: 'How does OpenObs avoid hallucinated queries?',
@@ -75,9 +75,14 @@ export const FAQ_ITEMS = [
       'OpenObs follows a "discovery-first" approach. Before generating any dashboard or alert, the Discovery Agent queries your actual data sources to find real metrics. The Verification Agent then validates every generated PromQL query against your Prometheus instance before returning results.',
   },
   {
+    question: 'What makes OpenObs different from an observability chatbot?',
+    answer:
+      'The product is built around the SRE loop: observe, detect, investigate, and act safely. OpenObs can create dashboards, create alerts, investigate incidents with evidence, and route risky cluster fixes through approval.',
+  },
+  {
     question: 'Which LLM providers are supported?',
     answer:
-      'OpenObs supports Anthropic (Claude), OpenAI, and any OpenAI-compatible API through the LLM Gateway abstraction layer. You configure your preferred provider via environment variables.',
+      'OpenObs supports Anthropic, OpenAI, Gemini, DeepSeek, Ollama, Azure OpenAI, Bedrock, and OpenAI-compatible APIs through the LLM gateway.',
   },
   {
     question: 'Is OpenObs production-ready?',

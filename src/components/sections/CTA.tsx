@@ -10,9 +10,6 @@ export function CTA() {
 
   return (
     <section className="relative py-32 text-center overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-br from-sp-red/5 via-sp-cyan/8 to-sp-violet/5 blur-[80px] pointer-events-none" />
-
       <div className="max-w-[1200px] mx-auto px-6 lg:px-10 relative" ref={ref}>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -20,10 +17,10 @@ export function CTA() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight mb-5 leading-tight"
         >
-          See your infrastructure
+          Close the SRE loop
           <br />
-          in full{' '}
-          <span className="spectral-text">color</span>
+          with{' '}
+          <span className="spectral-text">AI</span>
         </motion.h2>
 
         <motion.p
@@ -32,8 +29,8 @@ export function CTA() {
           transition={{ delay: 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="text-text-secondary text-lg max-w-[480px] mx-auto mb-10"
         >
-          Join the open-source community building the future of AI-powered
-          observability.
+          Start with natural-language dashboards and grow into alert-driven
+          investigations with approval-gated fixes.
         </motion.p>
 
         <motion.div
@@ -44,7 +41,7 @@ export function CTA() {
         >
           <a
             href="#get-started"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-text text-bg text-[0.9rem] font-medium rounded-lg hover:shadow-[0_8px_30px_rgba(232,230,227,0.15)] hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center gap-2 px-5 py-3 bg-text text-bg text-[0.9rem] font-medium hover:bg-accent transition-colors"
           >
             Get Started
             <ArrowRight size={16} />
@@ -53,7 +50,7 @@ export function CTA() {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 text-[0.9rem] text-text-secondary border border-border-light rounded-lg hover:bg-bg-elevated hover:text-text hover:border-text-muted transition-all"
+            className="inline-flex items-center gap-2 px-5 py-3 text-[0.9rem] text-text-secondary border border-border-light hover:bg-bg-secondary hover:text-text transition-colors"
           >
             <GithubIcon className="w-4 h-4" />
             Star on GitHub
